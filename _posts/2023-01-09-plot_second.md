@@ -2,6 +2,7 @@
 lyaout: single
 title: '첫번째 게시물입니다.'
 categories: coding
+tag: R
 ---
 Causal_Inference-Intro
 ================
