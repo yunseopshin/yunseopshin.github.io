@@ -4,6 +4,8 @@ title: '첫번째 게시물입니다.'
 categories: coding
 tag: [R, plot. blog, jekyll]
 author_profile: false
+sidebar:
+    nav: "docs"
 ---
 Causal_Inference-Intro
 ================
