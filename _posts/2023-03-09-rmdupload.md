@@ -43,7 +43,7 @@ output:
 상단에 
 
 ``` tex
-
+---
 lyaout: single
 title: '제목'
 categories: coding
@@ -51,7 +51,7 @@ tag: [R, blog, jekyll]
 author_profile: false
 sidebar:
     nav: "docs"
-
+---
 ```
 
 이것을 추가해주면된다. 그 뒤 포스팅의 주제에 맞게 제목, 카테고리, 테그를 정해주자.
