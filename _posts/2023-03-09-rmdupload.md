@@ -20,11 +20,8 @@ git 블로그를 생성하고 구색을 갖춘건 좋은데, 정작 포스팅을
 
 ``` tex
 title: "제목"
-
 author: 작성자
-
 date: "2023-03-09"
-
 output: html_document
 ```
 
@@ -33,11 +30,8 @@ output: html_document
 
 ``` tex
 title: "제목"
-
 author: 작성자
-
 date: "2023-03-09"
-
 output: 
     github_document:
 ```
