@@ -6,6 +6,7 @@ tag: [R, blog, jekyll]
 author_profile: false
 sidebar:
     nav: "docs"
+use_math: true
 ---
 
 이전 포스팅에서 rmarkdown을 md확장자로 knit해서 gitblog에 업로드하는
