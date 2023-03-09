@@ -36,6 +36,26 @@ output:
     github_document:
 ```
 
+
+
+이 경우 변환된 md파일을 보면 format option이 잘 확인되지 않는데 
+그러면 visual studio code를 켜서 해당 md파일에 들어가서
+상단에 
+
+``` tex
+
+lyaout: single
+title: '제목'
+categories: coding
+tag: [R, blog, jekyll]
+author_profile: false
+sidebar:
+    nav: "docs"
+
+```
+
+이것을 추가해주면된다. 그 뒤 포스팅의 주제에 맞게 제목, 카테고리, 테그를 정해주자.
+
 그 뒤 file제목을 `2023-03-09-rmdupload` 이런식으로 해준 뒤 본인의
 github.io폴더의 \_post폴더에 넣어주면 된다.
 
