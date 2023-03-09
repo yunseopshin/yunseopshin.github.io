@@ -29,7 +29,7 @@ plot(x, y)
 코드청크는 맞게 들어갔지만 output의 line이 출력되지 않은 문제가
 발생한다.
 
-![](images/2023-03-09-upload_images_files/figure-gfm/plot_md.png)
+![](/images/2023-03-09-upload_images_files/figure-gfm/plot_md.png)
 
 이 이유는 우리가 md파일로 변환하면 저 코드청크의 출력에 대해서 결과물이
 
@@ -58,4 +58,4 @@ y = x
 plot(x, y)
 ```
 
-![](images/2023-03-09-upload_images_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](/images/2023-03-09-upload_images_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
