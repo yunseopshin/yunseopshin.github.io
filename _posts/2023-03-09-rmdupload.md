@@ -1,5 +1,5 @@
 ---
-lyaout: single
+layout: single
 title: 'Rmarkdown을 gitblog에 업로드하기'
 categories: coding
 tag: [R, blog, jekyll]
