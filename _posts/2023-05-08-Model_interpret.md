@@ -258,7 +258,7 @@ model A의 가능도가 최대가 되는 방식으로 만들어 model A를 설�
   gradient가 큰 부분이 변화하면 결과값에 큰 영향을 줄거라 해석할 수
   있다.
 
-![](Map.png)
+![png](/images/2023-05-08-Model_interpret/Map.png)
 
 - Lime(Local interpretable Model-Agnostic Explanations, Ribeiro,2016)
 
@@ -268,7 +268,7 @@ model A의 가능도가 최대가 되는 방식으로 만들어 model A를 설�
 
 이 역시 t-sne와 마찬가지로 별도의 포스팅에서 다루도록 하겠다.
 
-![](Lime.png)
+![png](/images/2023-05-08-Model_interpret/Lime.png)
 
 ### 3.2.4. Explaination by example
 
