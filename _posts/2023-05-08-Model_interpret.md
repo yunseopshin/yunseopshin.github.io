@@ -1,7 +1,7 @@
 ---
 layout: single
 title: '논문 리뷰: The Mythos of Model Interpretability'
-categories: machine learning
+categories: machine_learning
 tag: [머신러닝]
 author_profile: false
 sidebar:
