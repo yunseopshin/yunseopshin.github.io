@@ -28,7 +28,7 @@ use_math: true
 
 ## 1. Introduction
 
-Deep neural network에서 bayesian inference를 사용하는 것은 prediction, uncertainty, model comparison, active learing, continual learning, decision making 등에 이점을 줬다. 또한 Bayesain comunity는 astrophysics, automatic diagonis, advertising model, fluid dynamics model 등 다양한 분야에서 각광을 보여왔다. 즉 간단하게 말해서 BNN은 여러가지 장점들을 가지고 있으며 여런 분야에서 성공적으로 적용됐다는 의미다.
+Deep neural network에서 bayesian inference를 사용하는 것은 prediction, uncertainty, model comparison, active learing, continual learning, decision making 등에 이점을 준다. 또한 Bayesain comunity는 astrophysics, automatic diagonis, advertising model, fluid dynamics model 등 다양한 분야에서 각광을 보여왔다. 즉 간단하게 말해서 BNN은 여러가지 장점들을 가지고 있으며 여런 분야에서 성공적으로 적용됐다.
 
 하지만 최근의 neural network는 weight의 수가 기하급수적으로 늘어나고 사후분포가 unimodal이 아닌 multi modal의 형태이기 때문에 이를 다루기 어렵고 그러기 위한 컴퓨팅 제약도 늘어났다.
 
@@ -47,7 +47,7 @@ $$
 저자들이 탐구하려고하는 BNN의 성질들은 다음과 같다.
 
 1. BNN이 다른 기본적인 모델학습과 ensemble 학습에 비해 performance측면서 상당한 이점이 있다.
-2. 하나의 긴 HNC chian은 사후분포에 대한 좋은 근사를 제시한다.
+2. 하나의 긴 HMC chian은 사후분포에 대한 좋은 근사를 제시한다.
 3. 사후분포 "tempering"은 최적의 예측을 하는데 있어 거의 역할을 하지 못한다. 다만 data argumentation과 함께 이뤄졌을때 performance 향상을 보인다.
 4. BMA performance는 사전분포 선택에 대해서 robust하다.
 5. BNN은 convariate shift에 대해서 robust하진 않다.
@@ -71,14 +71,14 @@ $p(\omega \mid \mathcal{D})$에서 $\omega$의 차원이 커질때 표본추출�
 
 해당 챕터에서는 거의 intro에서 했던말을 다시하면서 해당 연구의 중요성을 강조한다.
 
-대부분의 bayesian deep learning은 사후분포를 근사하는 scalable한 방법론에 초점이 맞춰져있었다하며, 이러한 연구들이 정작 실제 데이터에서 true 사후분포와 근사된 사후분포가 얼마나 차이가 나는지에 대해서는 다루지 않았다고 비판한다. 또한 표본추출 방법을 다루는 연구들은 대부분 stochastic한 방법위주로 연구되었다고 하며 이러한 방법들은 다음과 같은 이유 때문에 근본적으로 편향이 생길수 밖에 없다고 한다. 
+대부분의 bayesian deep learning은 사후분포를 근사하는 scalable한 방법론에 초점이 맞춰져있었다하며, 이러한 연구들이 정작 실제 데이터에서 true 사후분포와 근사된 사후분포가 얼마나 차이가 있는지 대해서는 다루지 않았다고 비판한다. 또한 표본추출 방법을 다루는 연구들은 대부분 stochastic한 방법위주로 연구되었다고 하며 이러한 방법들은 다음과 같은 이유 때문에 근본적인 편향이 생길수 밖에 없다고 한다. 
 
 1. 메트로폴리스-헤이스팅스 단계(accept-reject)을 진행하지 않음.
 2. 전체집단으로부터 batch를 sampling하므로 노이즈가 생길수 밖에 없음.
 
-이러한 이유에서 data subsampling은 본질적으로 HMC와 양립할수 없다는 의견을 보인다. 그뿐 아니라 기존에는 HNC과정에서 leap frog(등넘기)단계시에 $L=100$과 같이 조금만 반복을 진행하였다면 저자들은 연구를 진행하는데 있어 정확도를 키우기 위해 $L=10^5$인상황에서 한 epochs을 진행했다고 한다.
+이러한 이유에서 data subsampling은 본질적으로 HMC와 양립할수 없다는 의견을 보인다. 그뿐 아니라 기존에는 HMC과정에서 leap frog(등넘기)단계시에 $L=100$과 같이 적은 횟수의 반복을 진행하였다면 저자들은 연구를 진행하는데 있어 정확도를 키우기 위해 $L=10^5$과 같은 상황에서 한 epochs을 진행했다고 한다.
 
-이런 방법들이 실제로는 적용이 어렵고 scalable하진 않을 수 있지만, 이것을 통해 위에서 언급한 BNN의 여러가지 성질들에 탐구할수 있다고 재차 강조한다.
+이런 방법들이 실제로는 적용이 어렵고 scalable하지는 않지만, 이를 통해 위에서 언급한 BNN의 여러가지 성질들에 탐구할수 있다고 재차 강조한다.
 
 ## 4. HMC for deep neural network
 
@@ -114,7 +114,7 @@ $$
 여기서 논문에 쓰인 표현 중 "This result notably shows that HMC is relatively unobstructed by energy barriers in the posterior surface that would otherwise require multiple chains to overcome." 이란 표현이 있는데 해당 표현에 대해서는 조금 더 생각해봐야 될 것 같다. 아마 이렇게 독립인 chain으로 사후분포를 잘 근사할 수 있는게 사후분포 표면에 있는 에너지 베리어(?)에 의해 HMC가 방해받지 않는다 뭐 이런 말인거 같은데 HMC가 헤밀토니안 역학으로부터 따온 개념임을 고려해봤을 때 그것과 관련된 내용일듯 싶긴한데 구체적으로는 잘 모르겠다.
 
 
-##
+## 
 
 이제 4챕터까지 읽었는데 앞으로 6챕터가 남았고 appendix까지도 있다. Appendix는 아직 읽을까 말까 고민중이긴 한데 아마 본문 내용중에 특히 궁금한 내용이 있지 않는한 이것까지 리뷰할것 같지는 않다. 어째 오늘은 intro에서 결국 저자들이 뭘 하고자 하는지랑 실험셋팅만 주구장창 보다가 끝난거 같은데 다음부터는 본격적으로 어떤 말을 하고자하는지 알아보도록 하자.
 
