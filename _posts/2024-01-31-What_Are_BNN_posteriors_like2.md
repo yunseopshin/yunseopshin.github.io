@@ -13,9 +13,8 @@ use_math: true
 ### 목차
 
 - How well is HMC mixing?
-- Background
-- Related work
-- HMC for deep neural network
+- Evaluating Bayesian neural networks
+- Do we need cold posterior?
 - Reference
 
 
