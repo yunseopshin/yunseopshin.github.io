@@ -30,7 +30,7 @@ use_math: true
 
 그러기 위한 방법으로 Bayesian 방법론중 하나인 variational inference를 사용해 사후분포를 근사하는 $\theta$로 parameterized 된 변분분포 $q(\omega \mid \theta)$ 고려한다. 이후 이와  사후분포 사이의 거리를 최소로하는 $\theta$ 를 최적화 한다. 저자들은 이 방법을 "Bayes by Backprop"라고 명칭한다.
 
-기존에 Uncertainty를 고려하기 위한 방법으로 model ensemble이 많이 사용됐는데 이 경우 한 모델에 사용되는 parameter의 수가 $p$개라 한다면 ensemble 모델을 $m$개 적합한다 하면 $p*m$개의 parameter을 학습해야하는 반면, BBP는  $2*p$개의 parameter만 학습하고 이후 변분분포부터 weight를 추출하기만 하면되서 보다 효율적이다.
+기존에 Uncertainty를 고려하기 위한 방법으로 model ensemble이 많이 사용됐는데 이 경우 한 모델에 사용되는 parameter의 수가 $p$ 개라 한다면 ensemble 모델을 $m$개 적합한다 하면 $p \cdot m$ 개의 parameter을 학습해야하는 반면, BBP는  $2 \cdot p$ 개의 parameter만 학습하고 이후 변분분포부터 weight를 추출하기만 하면되서 보다 효율적이다.
 
 저자들은 BBP가 강화학습에도 도움이 된다고 주장하지만 해당부분에 대해서는 내 관심사가 아니므로 이번 포스팅에서는 다루지 않을 것이다.
 
@@ -84,6 +84,7 @@ $\mathcal{F}(\mathcal{D}, \theta)$를 최소로 한다는 것의 의미를 생�
 Reparameterized trick은 진짜 말그대로 trick 눈속임이고 이름이 붙은거에 비해서 진짜 거창한게 없으니 겁먹지 말자. 쉽게 설명하면 $\omega \sim N(\mu, \sigma^{2})$으로부터 표본추출할 때 이로부터 추출하는게 아니라 $\epsilon \sim N(0, 1)$로부터 $\epsilon$을 추출하고 $\omega = \sigma \epsilon + \mu$ 이렇게 $\omega$를 표본추출하는 것을 의미한다. 어떻게 보면 조삼모사처럼 생각될 수 있지만 이렇게 할 시에 분포자체를 최적화시킨다는 생각으로부터 단순히 paramerter들만 최적화시키면 된다는 스탠스로 바뀌는데 이점이 있다. 이 예시에는 $\epsilon$이 따르는 분포인 $N(0,1)$을 $q(\epsilon)$ 그리고 $\theta = (\mu, \sigma)$, $t(\theta, \epsilon) =  \sigma \epsilon + \mu$ 로 일반화시켜 생각할 때 다음이 성립한다.
 
 Proposition 1. 확률 밀도 함수가 $q(\epsilon)$로 주어지는 확률 변수 $\epsilon$을 고려하고, $\omega=t(\theta, \epsilon)$이며 $t(\theta, \epsilon)$가 결정론적 함수인 경우를 가정하자. 더 나아가, 주변 확률 밀도 $q(\omega \mid \theta)$가 $q(\epsilon) d \epsilon=q(\omega \mid \theta) d \omega$인 경우를 가정하자. 그런 다음 $\mathrm{w}$에서 미분 가능한 함수 $f$에 대해 다음이 성립한다:
+
 $$
 \frac{\partial}{\partial \theta} \mathbb{E}_{q(\omega \mid \theta)}[f(\omega, \theta)]=\mathbb{E}_{q(\epsilon)}\left[\frac{\partial f(\omega, \theta)}{\partial \omega} \frac{\partial \omega}{\partial \theta}+\frac{\partial f(\omega, \theta)}{\partial \theta}\right]
 $$
@@ -109,14 +110,19 @@ $$
 3. Let $\theta=(\mu, \rho)$.
 4. Let $f(\omega, \theta)=\log q(\omega \mid \theta)-\log P(\omega) P(\mathcal{D} \mid \omega)$.
 5. Calculate the gradient with respect to the mean
+
 $$
 \Delta_\mu=\frac{\partial f(\omega, \theta)}{\partial \omega}+\frac{\partial f(\omega, \theta)}{\partial \mu} .
 $$
+
 6. Calculate the gradient with respect to the standard deviation parameter $\rho$
+
 $$
 \Delta_\rho=\frac{\partial f(\omega, \theta)}{\partial \omega} \frac{\epsilon}{1+\exp (-\rho)}+\frac{\partial f(\omega, \theta)}{\partial \rho} .
 $$
+
 7. Update the variational parameters:
+
 $$
 \begin{aligned}
 & \mu \leftarrow \mu-\alpha \Delta_\mu \\
@@ -155,7 +161,7 @@ $$
 
 ## 4. Summary
 
-BBP는 variational inference와 경사하강법을 사용해 사후분포를 근사하는 방법론이다. $\theta^{*}$를 학습하는데 성공하였다면 그 후 $q(\omega \mid \theta^{*})$를 통해 $\omega$를 표본추출하여 prediction에 대한 예측은 표본평균으로 불확실성은 표본분산(혹은 표본표준편차)로 계산가능하다. 이런 방법으로 예측에 대한 불확실성을 추정가능하고, 기존 DNN에 regularization을 준거로 해석하여 보다 성능을 개선시킬 수 있다.
+BBP는 variational inference와 경사하강법을 사용해 사후분포를 근사하는 방법론이다. $\hat{\theta}$를 학습하는데 성공하였다면 그 후 $q(\omega \mid \hat{\theta})$를 통해 $\omega$ 를 표본추출하여 prediction에 대한 예측은 표본평균으로 불확실성은 표본분산(혹은 표본표준편차)로 계산가능하다. 이런 방법으로 예측에 대한 불확실성을 추정가능하고, 기존 DNN에 regularization을 준거로 해석하여 보다 성능을 개선시킬 수 있다.
 
 ## 5. Reference
 
