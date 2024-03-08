@@ -143,7 +143,7 @@ $$
 
 ### 3.4. Minibatches and KL re-weight
 
-Scalalbe한 model을 만들기 위해 통상적인 DNN에서 SGD를 사용하듯 BBP역시 minibatch 최적화가 가능하다.
+Scalable한 model을 만들기 위해 통상적인 DNN에서 SGD를 사용하듯 BBP역시 minibatch 최적화가 가능하다.
 
 (1)의 식에서보면 가능도항에 데이터셋 $\mathcal{D}$가 포함되늰데 이를 각 batch를 무작위로 나눠 계산가능하다. 
 
