@@ -25,7 +25,7 @@ use_math: true
 
 ## 2. Laplace Approximation
 
-$\hat{\theta} = \argmax_{\theta} p(\theta \mid \mathcal{D})$ 라 하자. $\hat{\theta}$은 보통의 neural network에서 SGD를 사용해 찾을 수 있다. 이 상황에서 $\log p(\theta \mid \mathcal{D})$의 $\theta = \hat{\theta}$에서의 이차 테일러 전개를 생각해보자.
+$\hat{\theta} = \text{argmax}_{\theta} p(\theta \mid \mathcal{D})$ 라 하자. $\hat{\theta}$은 보통의 neural network에서 SGD를 사용해 찾을 수 있다. 이 상황에서 $\log p(\theta \mid \mathcal{D})$의 $\theta = \hat{\theta}$에서의 이차 테일러 전개를 생각해보자.
 
 $$
 \log p(\theta \mid \mathcal{D}) \approx \log p(\hat{\theta} \mid \mathcal{D}) + (\theta - \hat{\theta})^{t} \frac{\partial}{\partial \theta} \log p(\hat{\theta} \mid \mathcal{D}) + \frac{1}{2} (\theta - \hat{\theta})^{t} \frac{\partial^{2}}{\partial \theta^{2}} \log p(\hat{\theta} \mid \mathcal{D})(\theta - \hat{\theta})
