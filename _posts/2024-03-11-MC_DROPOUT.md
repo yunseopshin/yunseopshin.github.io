@@ -198,4 +198,3 @@ where,  $z_{i1j}, z_{i2q} \overset{iid}{\sim} bernoulli(p), j = 1,2,\cdots,Q ,\,
 ## 7. Reference
 
     1. Gal, Yarin, and Zoubin Ghahramani. "Dropout as a bayesian approximation: Representing model uncertainty in deep learning." international conference on machine learning. PMLR, 2016.
-    2. Kim, Minyoung, and Timothy Hospedales. "BayesDLL: Bayesian Deep Learning Library." arXiv preprint arXiv:2309.12928 (2023).
