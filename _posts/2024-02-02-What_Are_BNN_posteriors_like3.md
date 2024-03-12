@@ -1,6 +1,6 @@
 ---
 layout: single
-title: '논문리뷰: What Are Bayesian Neural Network Posteriors Really Like - 2?'
+title: '논문리뷰: What Are Bayesian Neural Network Posteriors Really Like - 3?'
 categories: deep_learning
 tag: [딥러닝, 불확실성, python]
 author_profile: false
