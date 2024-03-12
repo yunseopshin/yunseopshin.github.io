@@ -21,7 +21,7 @@ use_math: true
 
 
 
-## 8. What is the effect of priors in Bayesian neural netrworks?
+## 8. What is the effect of priors in Bayesian neural networks?
 
 Bayesian deep learning은 사전분포를 선택하는데 있어 직관적인 설명의 부재로 비난받는다. 보통 그래서 전통적인 베이지안에서는 무정보사전분포(제르피 사전분포 등)을 사용해서 이러한 문제를 해결하려 하지만 BNN에서 그런시도가 있는지는 잘 모르겠다. (대략 찾아보니까 없는거 같기도 한데 이 논문에서는 일단 일반적인 정규분포와, 정규분포와 로지스틱 분포의 혼합분포를 비교하였다.) Wenzel은 많이 사용되는 정규 사전분포 $N(0, \alpha^{2} I)$가 적합하지 않고 성능을 저하시킨다 주정한다. 하지만 이 논문들의 저자는 실제 그렇지 않다고 주장하며 이를 정규분포와 로지스틱 분포의 혼합분포와 비교하며 이와 비교해서도 그렇게 성능이 떨어지지 않는걸 보인다. 이런 과정을 통해 BNN에서 사전분포 선택의 역할에 대해 탐구한다.
 
